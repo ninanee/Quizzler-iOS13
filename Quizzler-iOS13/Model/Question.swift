@@ -10,10 +10,10 @@ import Foundation
 
 struct Question {
     let text: String
-    let ansewer: Bool
+    let answer: String
     
-    init(text: String, ansewer: Bool) {
-        self.text = text
-        self.ansewer = ansewer
-    }
+    init(q: String, a: String) {
+           text = q
+           answer = a
+       }
 }

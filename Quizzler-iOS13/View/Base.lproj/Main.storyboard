@@ -25,8 +25,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fal-oS-tEg">
                                 <rect key="frame" x="20" y="48" width="374" height="814"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-li-mhO">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="614"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tby-lr-h5w" userLabel="ScoreLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="71.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSI-li-mhO" userLabel="QuestionLabel">
+                                        <rect key="frame" x="0.0" y="81.5" width="374" height="532.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Question Text">
                                                 <attributes>
@@ -95,6 +101,7 @@
                         <outlet property="falseButton" destination="tbn-vQ-GyC" id="Iuh-pZ-Fu3"/>
                         <outlet property="progressBar" destination="TXm-qh-7Xg" id="lUT-Ri-Tlq"/>
                         <outlet property="progressView" destination="rSI-li-mhO" id="muI-mK-fpS"/>
+                        <outlet property="scoreView" destination="Tby-lr-h5w" id="asG-Tc-D0h"/>
                         <outlet property="trueButton" destination="tbn-vQ-GyC" id="Ieg-m9-H4G"/>
                     </connections>
                 </viewController>

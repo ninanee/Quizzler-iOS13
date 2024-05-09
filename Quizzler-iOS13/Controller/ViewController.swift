@@ -10,21 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var scoreView: UILabel!
     @IBOutlet weak var progressView: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
-    var totalNmberQuestion = 0
-    var totalNumberPassed = 0
-    var time = Timer()
-    
-    let quiz = [
-        Question(text: "2 + 3 == 5?", ansewer: true),
-        Question(text: "5 - 3 == 2?", ansewer: true),
-        Question(text: "3 - 8 >= 10?", ansewer: false)
-    ]
-    
-    var questionNum = 0
+  
+    var quizbrian = QuizBrain()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,35 +25,33 @@ class ViewController: UIViewController {
         
         updateUI()
             }
-
+    
     @IBAction func answerButtonPressed(_ sender: UIButton) {
-        let userAnswer = sender.currentTitle
-        let acturalAnswer = quiz[questionNum].ansewer
+        let userAnswer = sender.currentTitle!
         
-        if(userAnswer?.uppercased() == String(acturalAnswer).uppercased()) {
+        let userGotItRight = quizbrian.checkAnswer(userAnswer)
+        
+        if userGotItRight {
             sender.backgroundColor = UIColor.green
-        }else{
+        } else {
             sender.backgroundColor = UIColor.red
         }
         
-        if questionNum < (quiz.count - 1) {
-            questionNum += 1
-        } else{
-            questionNum = 0
-        }
+        quizbrian.nextQuestion()
         
-       Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateUI), userInfo: nil, repeats: false)
         
-        time.invalidate()
-      
-       
+        
     }
     
     @objc func updateUI() {
-        progressView.text = quiz[questionNum].text
+        progressView.text = quizbrian.getQuestinText()
+        progressBar.progress = quizbrian.getQuestionProgress()
+        trueButton.backgroundColor = UIColor.clear
+        scoreView.text = "Score: \(quizbrian.getScore())"
+        
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
-        progressBar.progress = Float(questionNum + 1) / Float(quiz.count)
     }
     
 }
